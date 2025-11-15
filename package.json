@@ -1,0 +1,17 @@
+{
+  "name": "7pro-backend",
+  "version": "1.0.0",
+  "description": "Backend API for 7 Pro student project center (Node + MongoDB)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.21.2",
+    "mongoose": "^8.19.4",
+    "nodemailer": "^7.0.10"
+  }
+}
