@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Ignore node_modules folder (contains dependencies)
 node_modules/
 
@@ -17,3 +18,24 @@ node_modules/
 # Ignore OS-specific files (optional, specific to macOS or Windows)
 .DS_Store    # macOS
 Thumbs.db    # Windows
+=======
+# Ignore node_modules folder (contains dependencies)
+node_modules/
+
+# Ignore .env file (contains sensitive environment variables)
+.env
+
+# Ignore log files (logs can grow large and are unnecessary to track)
+*.log
+
+# Ignore temporary files and build directories (e.g., generated files)
+*.tmp
+
+# Ignore IDE/editor specific files (optional, if you don't want these in the repo)
+.vscode/
+.idea/
+
+# Ignore OS-specific files (optional, specific to macOS or Windows)
+.DS_Store    # macOS
+Thumbs.db    # Windows
+>>>>>>> 9fba741faca705f7ee9ba7fda38a93d3bdc002b0

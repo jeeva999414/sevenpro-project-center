@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -2178,3 +2179,2185 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>7 Pro | Student Project Center</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-card: #070b23;
+      --bg-soft: #0b102a;
+      --accent: #6366f1;
+      --accent2: #22d3ee;
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --danger: #f97373;
+      --success: #22c55e;
+      --radius: 18px;
+      --shadow: 0 18px 40px rgba(15, 23, 42, 0.85);
+      --transition: 0.25s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1f2937 0, #020617 40%, #000 100%);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(transparent 0 95%, rgba(148, 163, 184, 0.06) 95%),
+        linear-gradient(90deg, transparent 0 95%, rgba(148, 163, 184, 0.06) 95%);
+      background-size: 60px 60px;
+      opacity: 0.45;
+      pointer-events: none;
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: -150px;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.18), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(129, 140, 248, 0.2), transparent 55%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* HEADER / NAV */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to right, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.85));
+      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.6rem 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .brand-logo {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: conic-gradient(from 210deg, #22d3ee, #6366f1, #a855f7, #22d3ee);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 25px rgba(79, 70, 229, 0.8);
+    }
+
+    .brand-logo span {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #020617;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .brand-text strong {
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .brand-text span {
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    nav {
+      display: flex;
+      gap: 0.3rem;
+      align-items: center;
+    }
+
+    .nav-link {
+      font-size: 0.85rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: background var(--transition), color var(--transition), border var(--transition), transform var(--transition);
+      cursor: pointer;
+    }
+
+    .nav-link:hover {
+      color: var(--text);
+      border-color: rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.9);
+      transform: translateY(-1px);
+    }
+
+    .nav-link.active {
+      background: linear-gradient(120deg, var(--accent), var(--accent2));
+      color: #020617;
+      border-color: transparent;
+      box-shadow: 0 0 20px rgba(79, 70, 229, 0.9);
+    }
+
+    .menu-toggle {
+      display: none;
+      border: none;
+      background: transparent;
+      color: var(--text);
+      font-size: 1.3rem;
+    }
+
+    /* LAYOUT */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.4rem 1.1rem 2.2rem;
+    }
+
+    .page {
+      display: none;
+      animation: fadePage 0.3s ease-out;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    @keyframes fadePage {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 1.1rem;
+    }
+
+    .tag-pill {
+      font-size: 0.7rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: var(--muted);
+    }
+
+    .card {
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.96));
+      border-radius: var(--radius);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: var(--shadow);
+      padding: 1rem 1.1rem;
+    }
+
+    .btn {
+      border: none;
+      outline: none;
+      cursor: pointer;
+      border-radius: 999px;
+      font-size: 0.86rem;
+      font-weight: 500;
+      padding: 0.55rem 1.2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: transform var(--transition), box-shadow var(--transition), background var(--transition), color var(--transition);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #020617;
+      box-shadow: 0 0 22px rgba(79, 70, 229, 0.8);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 30px rgba(56, 189, 248, 0.9);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--muted);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+    }
+
+    .btn-ghost:hover {
+      color: var(--text);
+      transform: translateY(-1px);
+      background: rgba(15, 23, 42, 1);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: var(--muted);
+    }
+
+    .badge i {
+      font-size: 0.75rem;
+      color: var(--accent2);
+    }
+
+    .text-muted {
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    /* HOME */
+    .home-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.4fr);
+      gap: 1.6rem;
+      align-items: center;
+    }
+
+    .hero-title {
+      font-size: 2.1rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-title span {
+      background: linear-gradient(120deg, var(--accent2), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-text {
+      font-size: 0.92rem;
+      color: var(--muted);
+      max-width: 480px;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .hero-card {
+      position: relative;
+      border-radius: var(--radius);
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.22), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(129, 140, 248, 0.2), transparent 60%),
+        var(--bg-card);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      box-shadow: var(--shadow);
+      padding: 1rem;
+      overflow: hidden;
+    }
+
+    .hero-card h3 {
+      margin: 0 0 0.4rem;
+      font-size: 1rem;
+    }
+
+    .hero-card p {
+      margin: 0;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .hero-orb {
+      position: absolute;
+      width: 110px;
+      height: 110px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.16), transparent);
+      right: -25px;
+      top: -25px;
+      animation: floatOrb 6s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatOrb {
+      from { transform: translateY(0); }
+      to { transform: translateY(10px); }
+    }
+
+    /* ABOUT */
+    .two-column {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.3fr);
+      gap: 1.3rem;
+      align-items: flex-start;
+    }
+
+    .process-list {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 0;
+      display: grid;
+      gap: 0.6rem;
+    }
+
+    .process-item {
+      display: grid;
+      grid-template-columns: 32px minmax(0, 1fr);
+      gap: 0.4rem;
+      align-items: flex-start;
+      font-size: 0.82rem;
+    }
+
+    .process-step-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.95);
+      font-size: 0.8rem;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 0.9rem;
+      margin-top: 0.6rem;
+    }
+
+    .team-card {
+      border-radius: 16px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      padding: 0.7rem;
+      text-align: center;
+      font-size: 0.8rem;
+    }
+
+    .team-photo {
+      width: 64px;
+      height: 64px;
+      border-radius: 999px;
+      margin: 0 auto 0.4rem;
+      overflow: hidden;
+      border: 2px solid rgba(94, 234, 212, 0.85);
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+    }
+
+    .team-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .team-role {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    /* PROJECT IDEAS */
+    .ideas-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.5fr);
+      gap: 0.8rem;
+      margin-bottom: 0.9rem;
+      align-items: center;
+    }
+
+    .ideas-search {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .search-row {
+      display: flex;
+      gap: 0.45rem;
+    }
+
+    .search-row input {
+      flex: 1;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.98);
+      color: var(--text);
+      padding: 0.45rem 0.7rem;
+      font-size: 0.8rem;
+      outline: none;
+    }
+
+    .search-row input:focus {
+      border-color: var(--accent2);
+      box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.4);
+    }
+
+    .ideas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0.9rem;
+    }
+
+    .idea-card {
+      position: relative;
+      border-radius: 16px;
+      background:
+        radial-gradient(circle at top left, rgba(34, 211, 238, 0.16), transparent 60%),
+        rgba(15, 23, 42, 0.98);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform var(--transition), box-shadow var(--transition), border var(--transition);
+    }
+
+    .idea-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8);
+      border-color: rgba(94, 234, 212, 0.9);
+    }
+
+    .idea-img {
+      height: 110px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .idea-info {
+      padding: 0.7rem 0.8rem 0.8rem;
+      font-size: 0.8rem;
+    }
+
+    .idea-serial {
+      font-size: 0.7rem;
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.97);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .idea-type {
+      font-size: 0.7rem;
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(56, 189, 248, 0.8);
+      background: rgba(8, 47, 73, 0.9);
+      color: #e0f2fe;
+      float: right;
+      margin-top: -1.1rem;
+    }
+
+    .idea-title {
+      font-size: 0.9rem;
+      margin: 0.3rem 0 0.2rem;
+      min-height: 2.2em;
+    }
+
+    .idea-desc {
+      color: var(--muted);
+      margin: 0 0 0.5rem;
+      height: 2.6em;
+      overflow: hidden;
+    }
+
+    .idea-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    /* ORDER */
+    .order-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.2fr);
+      gap: 1.4rem;
+      align-items: flex-start;
+    }
+
+    .order-stepper {
+      display: flex;
+      justify-content: center;
+      gap: 2.2rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .step-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.2rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .step-dot {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(15, 23, 42, 0.96);
+      color: var(--muted);
+    }
+
+    .step-item.active .step-dot {
+      background: radial-gradient(circle, var(--accent2), var(--accent));
+      border-color: transparent;
+      color: #020617;
+      box-shadow: 0 0 16px rgba(94, 234, 212, 0.7);
+    }
+
+    .step-item.active .step-label {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    form {
+      margin: 0;
+    }
+
+    .form-step {
+      display: none;
+    }
+
+    .form-step.active {
+      display: block;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 0.8rem;
+    }
+
+    .form-group {
+      margin-bottom: 0.65rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 0.2rem;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.98);
+      color: var(--text);
+      padding: 0.45rem 0.6rem;
+      font-family: inherit;
+      font-size: 0.82rem;
+      outline: none;
+      transition: border var(--transition), box-shadow var(--transition), background var(--transition);
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: var(--accent2);
+      box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.4);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    .hint {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: 0.1rem;
+    }
+
+    .order-selected {
+      display: none;
+      border-radius: 12px;
+      border: 1px dashed rgba(94, 234, 212, 0.8);
+      background: rgba(15, 23, 42, 0.97);
+      padding: 0.5rem 0.6rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .order-selected span {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .order-selected button {
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 0.75rem;
+      margin-left: 0.4rem;
+    }
+
+    .order-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.6rem;
+      margin-top: 0.7rem;
+      flex-wrap: wrap;
+    }
+
+    .msg {
+      display: none;
+      margin-top: 0.6rem;
+      padding: 0.45rem 0.6rem;
+      border-radius: 10px;
+      font-size: 0.8rem;
+    }
+
+    .msg.success {
+      display: block;
+      background: rgba(22, 163, 74, 0.15);
+      border: 1px solid rgba(34, 197, 94, 0.8);
+      color: #bbf7d0;
+    }
+
+    .msg.error {
+      display: block;
+      background: rgba(220, 38, 38, 0.15);
+      border: 1px solid rgba(248, 113, 113, 0.9);
+      color: #fecaca;
+    }
+
+    /* CONTACT */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.4fr);
+      gap: 1.3rem;
+    }
+
+    .contact-row {
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      margin-bottom: 0.4rem;
+      font-size: 0.82rem;
+      cursor: pointer;
+    }
+
+    .contact-row:hover .contact-icon {
+      border-color: rgba(34, 211, 238, 0.8);
+      box-shadow: 0 0 14px rgba(34, 211, 238, 0.7);
+    }
+
+    .contact-row span.text-muted {
+      text-decoration: underline;
+    }
+
+    .contact-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.98);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent2);
+      font-size: 0.9rem;
+      transition: border var(--transition), box-shadow var(--transition);
+    }
+
+    /* HOST / ADMIN */
+    .admin-login,
+    .admin-panel {
+      margin-top: 0.7rem;
+    }
+
+    .table-wrapper {
+      margin-top: 0.5rem;
+      border-radius: 12px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      max-height: 260px;
+      overflow: auto;
+      font-size: 0.78rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 0.35rem 0.45rem;
+      border-bottom: 1px solid rgba(30, 64, 175, 0.6);
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    thead {
+      position: sticky;
+      top: 0;
+      background: rgba(15, 23, 42, 1);
+    }
+
+    tbody tr:nth-child(even) {
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    .admin-empty {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.4rem;
+    }
+
+    /* MODAL */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.9);
+      z-index: 50;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .modal-backdrop.active {
+      display: flex;
+    }
+
+    .modal {
+      max-width: 580px;
+      width: 100%;
+      border-radius: 20px;
+      background: rgba(15, 23, 42, 0.98);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      box-shadow: 0 26px 70px rgba(0, 0, 0, 0.85);
+      overflow: hidden;
+      animation: modalIn 0.25s ease-out;
+    }
+
+    @keyframes modalIn {
+      from { opacity: 0; transform: translateY(18px) scale(0.97); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 0.9rem 0.5rem;
+    }
+
+    .modal-header h3 {
+      margin: 0;
+      font-size: 0.96rem;
+    }
+
+    .modal-body {
+      padding: 0 0.9rem 0.9rem;
+      font-size: 0.82rem;
+    }
+
+    .modal-img {
+      height: 170px;
+      border-radius: 14px;
+      background-size: cover;
+      background-position: center;
+      margin-bottom: 0.55rem;
+    }
+
+    .modal-close {
+      border: none;
+      background: rgba(15, 23, 42, 0.98);
+      border-radius: 999px;
+      width: 26px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      cursor: pointer;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+    }
+
+    .modal-tags {
+      display: flex;
+      gap: 0.4rem;
+      margin-bottom: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .modal-tags span {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      padding: 0.2rem 0.55rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .modal-footer {
+      margin-top: 0.6rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    /* FOOTER */
+    footer {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.9rem 1.1rem 1.4rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    footer span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    footer i {
+      color: var(--accent2);
+      font-size: 0.75rem;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .home-layout,
+      .two-column,
+      .order-layout,
+      .contact-layout,
+      .ideas-top {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-container {
+        padding-inline: 1rem;
+      }
+
+      nav {
+        position: fixed;
+        top: 54px;
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0.4rem 1.1rem 0.7rem;
+        background: rgba(15, 23, 42, 0.98);
+        border-bottom: 1px solid rgba(148, 163, 184, 0.4);
+        transform: translateY(-100%);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 0.25s ease, opacity 0.25s ease;
+      }
+
+      nav.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      main {
+        padding-top: 1.1rem;
+      }
+
+      .form-row {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="nav-container">
+    <div class="brand">
+      <div class="brand-logo"><span>7P</span></div>
+      <div class="brand-text">
+        <strong>7 PRO</strong>
+        <span>Student Project Center</span>
+      </div>
+    </div>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <nav id="nav">
+      <a class="nav-link active" data-page="home"><i class="fas fa-house"></i> Home</a>
+      <a class="nav-link" data-page="about"><i class="fas fa-users"></i> About</a>
+      <a class="nav-link" data-page="ideas"><i class="fas fa-lightbulb"></i> Project Ideas</a>
+      <a class="nav-link" data-page="order"><i class="fas fa-file-signature"></i> Order</a>
+      <a class="nav-link" data-page="contact"><i class="fas fa-headset"></i> Contact</a>
+      <a class="nav-link" data-page="host"><i class="fas fa-lock"></i> Host</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HOME PAGE -->
+  <section class="page active" id="page-home">
+    <div class="section-title">
+      Welcome to <span class="tag-pill">7 Pro / Seven Pro</span>
+    </div>
+    <div class="section-subtitle">
+      We create custom hardware &amp; software projects for school and college students.
+    </div>
+
+    <div class="home-layout">
+      <div>
+        <div class="hero-title">
+          Bring your <span>project idea</span> – we build the complete solution.
+        </div>
+        <p class="hero-text">
+          Mini project or final year project, simple or advanced – share even a small idea and
+          our team converts it into a full working project with explanation and support.
+        </p>
+
+        <div class="hero-actions">
+          <button class="btn btn-primary" id="homeOrderBtn">
+            <i class="fas fa-rocket"></i> Order your project
+          </button>
+          <button class="btn btn-ghost" id="homeIdeasBtn">
+            <i class="fas fa-lightbulb"></i> View project ideas
+          </button>
+        </div>
+
+        <div class="hero-tags">
+          <span class="badge"><i class="fas fa-microchip"></i> Embedded &amp; IoT</span>
+          <span class="badge"><i class="fas fa-code"></i> Web / App / AI</span>
+          <span class="badge"><i class="fas fa-school"></i> School &amp; College students</span>
+        </div>
+      </div>
+
+      <!-- simple visual card (replaces "Today at 7 Pro" box) -->
+      <div class="hero-card">
+        <h3>Your tech project partner</h3>
+        <p>
+          7 Pro supports students with end-to-end project help – from idea,
+          to circuit &amp; coding, to report and final explanation.
+        </p>
+        <div class="hero-orb"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT PAGE -->
+  <section class="page" id="page-about">
+    <div class="section-title">
+      About 7 Pro
+      <span class="tag-pill">How we support students</span>
+    </div>
+    <div class="section-subtitle">
+      Project center focused on helping students complete quality projects with confidence.
+    </div>
+
+    <div class="two-column">
+      <div class="card">
+        <h3 style="margin-top:0;">Who we are</h3>
+        <p class="text-muted">
+          7 Pro (Seven Pro) is a student project lab. We support school students, diploma,
+          engineering, arts &amp; science students with <strong>idea to final project</strong>.
+        </p>
+        <p class="text-muted">
+          You can bring your own topic, staff-given problem statement, or select from our project
+          ideas list. We handle: design, coding, hardware, testing, documentation and explanation.
+        </p>
+
+        <h3 style="margin-top:0.9rem;">Project process</h3>
+        <ul class="process-list">
+          <li class="process-item">
+            <div class="process-step-num">1</div>
+            <div>
+              <strong>Share idea &amp; details</strong><br />
+              <span class="text-muted">Fill the online order form or send your topic on WhatsApp.</span>
+            </div>
+          </li>
+          <li class="process-item">
+            <div class="process-step-num">2</div>
+            <div>
+              <strong>Call &amp; confirmation</strong><br />
+              <span class="text-muted">Our team calls in few hours, confirms requirements, deadline &amp; budget.</span>
+            </div>
+          </li>
+          <li class="process-item">
+            <div class="process-step-num">3</div>
+            <div>
+              <strong>Development &amp; testing</strong><br />
+              <span class="text-muted">We build the circuit / code, test everything and prepare demo.</span>
+            </div>
+          </li>
+          <li class="process-item">
+            <div class="process-step-num">4</div>
+            <div>
+              <strong>Delivery &amp; explanation</strong><br />
+              <span class="text-muted">We explain the project step by step so you can present it clearly.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-top:0;">Our core team</h3>
+        <p class="text-muted">
+          Replace the photos below with your real team pictures. Each card can have name, role and a
+          short description.
+        </p>
+
+        <div class="team-grid">
+          <div class="team-card">
+            <div class="team-photo">
+              <!-- replace src with your image path, e.g. img/jeeva.jpg -->
+              <img src="https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg?auto=compress&w=600" alt="Team member 1">
+            </div>
+            <strong>Jeeva</strong><br />
+            <span class="team-role">Embedded &amp; Robotics lead</span><br />
+            <span class="text-muted">Designs hardware, sensors and microcontroller code.</span>
+          </div>
+
+          <div class="team-card">
+            <div class="team-photo">
+              <img src="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&w=600" alt="Team member 2">
+            </div>
+            <strong>Akash</strong><br />
+            <span class="team-role">Full-stack developer</span><br />
+            <span class="text-muted">Handles web / mobile apps, database and APIs.</span>
+          </div>
+
+          <div class="team-card">
+            <div class="team-photo">
+              <img src="https://images.pexels.com/photos/3861964/pexels-photo-3861964.jpeg?auto=compress&w=600" alt="Team member 3">
+            </div>
+            <strong>Meena</strong><br />
+            <span class="team-role">Project mentor</span><br />
+            <span class="text-muted">Guides report, PPT and viva preparation.</span>
+          </div>
+
+          <div class="team-card">
+            <div class="team-photo">
+              <img src="https://images.pexels.com/photos/1181528/pexels-photo-1181528.jpeg?auto=compress&w=600" alt="Team member 4">
+            </div>
+            <strong>Karthik</strong><br />
+            <span class="team-role">Student support</span><br />
+            <span class="text-muted">Coordinates delivery, practice sessions and support.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECT IDEAS PAGE -->
+  <section class="page" id="page-ideas">
+    <div class="section-title">
+      Project ideas
+      <span class="tag-pill">Browse &amp; search</span>
+    </div>
+    <div class="section-subtitle">
+      Search by serial number or topic (e.g. “RFID”, “water”, “attendance”, “P-0001”). Click any project to see details and order it.
+    </div>
+
+    <div class="ideas-top">
+      <div class="card ideas-search">
+        <div class="search-row">
+          <input id="ideaSearch" placeholder="Search by serial or topic..." />
+          <button class="btn btn-ghost" id="ideaSearchBtn">
+            <i class="fas fa-magnifying-glass"></i> Search
+          </button>
+        </div>
+        <span class="text-muted">We will also show similar results that contain your keyword.</span>
+      </div>
+
+      <div class="card">
+        <div class="text-muted">
+          Showing <strong id="ideasShown">0</strong> of <strong id="ideasTotal">0</strong> ideas. <br>
+          These are sample titles – we can customize them based on your college requirement.
+        </div>
+      </div>
+    </div>
+
+    <div class="ideas-grid" id="ideasGrid">
+      <!-- project idea cards injected by JS -->
+    </div>
+  </section>
+
+  <!-- ORDER PAGE -->
+  <section class="page" id="page-order">
+    <div class="section-title">
+      Order your project
+      <span class="tag-pill">Student order form</span>
+    </div>
+    <div class="section-subtitle">
+      2 simple steps: your details + project details. We will contact you within an hour.
+    </div>
+
+    <div class="order-layout">
+      <div class="card">
+        <div class="order-stepper">
+          <div class="step-item active" data-step="1">
+            <div class="step-dot">1</div>
+            <div class="step-label">Student info</div>
+          </div>
+          <div class="step-item" data-step="2">
+            <div class="step-dot">2</div>
+            <div class="step-label">Project info</div>
+          </div>
+        </div>
+
+        <div class="order-selected" id="selectedProjectBox">
+          Selected project: <span id="selectedProjectText"></span>
+          <button type="button" id="clearSelectedProject"><i class="fas fa-xmark"></i> change</button>
+        </div>
+
+        <form id="orderForm">
+          <!-- hidden fields -->
+          <input type="hidden" id="projectSerial" name="projectSerial">
+          <input type="hidden" id="orderedFromIdea" name="orderedFromIdea" value="no">
+
+          <!-- step 1 -->
+          <div class="form-step active" data-step="1">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="studentName">Student name *</label>
+                <input id="studentName" required placeholder="Your full name">
+              </div>
+              <div class="form-group">
+                <label for="instituteName">Institute / school name *</label>
+                <input id="instituteName" required placeholder="College / School">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="mobile">Mobile number *</label>
+                <input id="mobile" required placeholder="WhatsApp / Phone">
+                <div class="hint">Indian 10-digit number (we will contact you by call / WhatsApp).</div>
+              </div>
+              <div class="form-group">
+                <label for="email">Email ID</label>
+                <input id="email" type="email" placeholder="Optional, but must be valid if given">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="city">City *</label>
+                <input id="city" required placeholder="City / Town">
+              </div>
+              <div class="form-group">
+                <label for="educationLevel">Education level *</label>
+                <select id="educationLevel" required>
+                  <option value="">Select</option>
+                  <option>School (6th–10th)</option>
+                  <option>School (11th–12th)</option>
+                  <option>Diploma</option>
+                  <option>UG – Engineering</option>
+                  <option>UG – Arts / Science</option>
+                  <option>PG / Others</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="order-actions">
+              <span class="text-muted">
+                Step 1: Only your contact details. Project details will come in the next step.
+              </span>
+              <button type="button" class="btn btn-primary" id="goToStep2">
+                Next step <i class="fas fa-arrow-right-long"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- step 2 -->
+          <div class="form-step" data-step="2">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="projectTitle">Project title *</label>
+                <input id="projectTitle" required placeholder="Type your title or use selected idea">
+              </div>
+              <div class="form-group">
+                <label for="projectDomain">Project domain *</label>
+                <select id="projectDomain" required>
+                  <option value="">Select</option>
+                  <option>Embedded / IoT</option>
+                  <option>Robotics</option>
+                  <option>Web development</option>
+                  <option>Mobile app</option>
+                  <option>AI / ML / Data science</option>
+                  <option>Mini project (any)</option>
+                  <option>Final year major project</option>
+                  <option>Other / Not sure</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="projectConcept">Concept / idea (in your words) *</label>
+              <textarea id="projectConcept" required placeholder="Write your idea or paste staff problem statement"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="projectDescription">Additional details</label>
+              <textarea id="projectDescription" placeholder="Any extra features, technology preference, etc."></textarea>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="deadline">Deadline / last date *</label>
+                <input id="deadline" type="date" required>
+              </div>
+              <div class="form-group">
+                <label for="budget">Budget range (optional)</label>
+                <select id="budget">
+                  <option value="">Not decided</option>
+                  <option>Below ₹2,000</option>
+                  <option>₹2,000 – ₹5,000</option>
+                  <option>₹5,000 – ₹10,000</option>
+                  <option>Above ₹10,000</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="order-actions">
+              <button type="button" class="btn btn-ghost" id="backToStep1">
+                <i class="fas fa-arrow-left-long"></i> Back
+              </button>
+              <button type="submit" class="btn btn-primary">
+                Submit order <i class="fas fa-check-circle"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <div class="msg" id="orderMsg"></div>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-top:0;">What happens after you submit?</h3>
+        <ul class="process-list">
+          <li class="process-item">
+            <div class="process-step-num"><i class="fas fa-phone-volume"></i></div>
+            <div>
+              <strong>Call within 1 hour</strong><br />
+              <span class="text-muted">We confirm your requirements, deadline and budget.</span>
+            </div>
+          </li>
+          <li class="process-item">
+            <div class="process-step-num"><i class="fas fa-gears"></i></div>
+            <div>
+              <strong>Development stage</strong><br />
+              <span class="text-muted">We build and test your project (hardware / software).</span>
+            </div>
+          </li>
+          <li class="process-item">
+            <div class="process-step-num"><i class="fas fa-chalkboard-user"></i></div>
+            <div>
+              <strong>Explanation &amp; handover</strong><br />
+              <span class="text-muted">You get project files, report and explanation session.</span>
+            </div>
+          </li>
+        </ul>
+
+        <p class="text-muted" style="margin-top:0.8rem;">
+          Final message shown to students after submit:<br />
+          <strong>
+            “Thank you! Your project request has been submitted. Our team will contact you within an hour.”
+          </strong>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT PAGE -->
+  <section class="page" id="page-contact">
+    <div class="section-title">
+      Contact &amp; support
+      <span class="tag-pill">Reach us</span>
+    </div>
+    <div class="section-subtitle">
+      Have doubts before placing an order? You can reach us directly.
+    </div>
+
+    <div class="contact-layout">
+      <div class="card">
+        <!-- tel: opens dialer -->
+        <a class="contact-row" href="tel:+919999999999">
+          <div class="contact-icon"><i class="fas fa-phone"></i></div>
+          <div>
+            <strong>Call / WhatsApp</strong><br />
+            <span class="text-muted">+91-9999999999</span>
+          </div>
+        </a>
+
+        <!-- mailto: opens email app -->
+        <a class="contact-row" href="mailto:hello@7pro.in">
+          <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+          <div>
+            <strong>Email</strong><br />
+            <span class="text-muted">hello@7pro.in</span>
+          </div>
+        </a>
+
+        <!-- maps with latitude & longitude -->
+        <!-- replace 12.12345,79.12345 with your own coordinates -->
+        <a class="contact-row" href="https://www.google.com/maps?q=12.12345,79.12345" target="_blank" rel="noopener">
+          <div class="contact-icon"><i class="fas fa-location-dot"></i></div>
+          <div>
+            <strong>Location</strong><br />
+            <span class="text-muted">Tap to open in Google Maps</span>
+          </div>
+        </a>
+
+        <p class="text-muted" style="margin-top:0.6rem;">
+          You can mention in comments if you prefer explanation in Tamil or English.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-top:0;">Quick question form</h3>
+        <p class="text-muted">Use this for general doubts. For ordering, please use the Order page.</p>
+
+        <form id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contactName">Name *</label>
+              <input id="contactName" required>
+            </div>
+            <div class="form-group">
+              <label for="contactPhone">Mobile *</label>
+              <input id="contactPhone" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="contactMessage">Message *</label>
+            <textarea id="contactMessage" required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">
+            Send message <i class="fas fa-paper-plane"></i>
+          </button>
+
+          <div class="msg" id="contactMsg"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOST / ADMIN PAGE -->
+  <section class="page" id="page-host">
+    <div class="section-title">
+      Host section
+      <span class="tag-pill">Team only</span>
+    </div>
+    <div class="section-subtitle">
+      Orders &amp; project ideas – visible only for you and your team.
+    </div>
+
+    <div class="card">
+      <div class="badge">
+        <i class="fas fa-key"></i> Login: user <strong>team7</strong>, password <strong>999414</strong>
+      </div>
+
+      <div class="admin-login" id="adminLoginBox">
+        <form id="adminLoginForm" style="max-width:330px;margin-top:0.6rem;">
+          <div class="form-group">
+            <label for="adminUser">User ID</label>
+            <input id="adminUser" placeholder="team7">
+          </div>
+          <div class="form-group">
+            <label for="adminPass">Password</label>
+            <input id="adminPass" type="password" placeholder="999414">
+          </div>
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-right-to-bracket"></i> Login
+          </button>
+          <div class="msg" id="adminLoginMsg"></div>
+        </form>
+      </div>
+
+      <div class="admin-panel" id="adminPanel" style="display:none;">
+        <div class="order-layout" style="grid-template-columns: minmax(0,1.6fr) minmax(0,1.2fr);">
+          <!-- Orders column -->
+          <div>
+            <h3 style="margin-top:0;">Student orders</h3>
+            <div class="table-wrapper" id="ordersTableWrapper"></div>
+            <div class="admin-empty" id="ordersEmptyText">No orders yet.</div>
+          </div>
+
+          <!-- Project manage column -->
+          <div>
+            <h3 style="margin-top:0;">Add project idea</h3>
+            <form id="addIdeaForm">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="ideaSerial">Serial *</label>
+                  <input id="ideaSerial" placeholder="P-0101" required>
+                </div>
+                <div class="form-group">
+                  <label for="ideaTitle">Title *</label>
+                  <input id="ideaTitle" placeholder="Smart Energy Meter using IoT" required>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="ideaType">Type *</label>
+                  <select id="ideaType" required>
+                    <option value="">Select</option>
+                    <option>Hardware / IoT</option>
+                    <option>Software / Web</option>
+                    <option>AI / ML</option>
+                    <option>Robotics</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="ideaImg">Image URL (optional)</label>
+                  <input id="ideaImg" placeholder="https://...">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="ideaShort">Short description *</label>
+                <textarea id="ideaShort" required></textarea>
+              </div>
+              <div class="form-group">
+                <label for="ideaLong">Full description *</label>
+                <textarea id="ideaLong" required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary">
+                <i class="fas fa-plus-circle"></i> Add idea
+              </button>
+            </form>
+
+            <button type="button" class="btn btn-ghost" id="adminLogoutBtn" style="margin-top:0.6rem;">
+              <i class="fas fa-right-from-bracket"></i> Logout
+            </button>
+
+            <p class="text-muted" style="margin-top:0.6rem;">
+              This panel will still work even if the backend is offline – orders are also saved in browser
+              storage as backup.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- PROJECT MODAL -->
+<div class="modal-backdrop" id="ideaModalBackdrop">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <h3 id="modalTitle"></h3>
+        <div class="text-muted" id="modalMeta"></div>
+      </div>
+      <button class="modal-close" id="modalClose"><i class="fas fa-xmark"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-img" id="modalImg"></div>
+      <div class="modal-tags" id="modalTags"></div>
+      <p class="text-muted" id="modalDesc"></p>
+      <div class="modal-footer">
+        <span>Like this idea? You can order this exact project or ask us to customize it.</span>
+        <button class="btn btn-primary" id="modalOrderBtn">
+          <i class="fas fa-cart-plus"></i> Order this project
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>
+    <i class="fas fa-copyright"></i>
+    <span id="footerYear"></span> 7 Pro – Student Project Center.
+  </span>
+  <span>
+   
+  
+  </span>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // ---------- BASIC NAV / PAGES ----------
+  const pages = document.querySelectorAll(".page");
+  const navLinks = document.querySelectorAll(".nav-link");
+  const nav = document.getElementById("nav");
+  const menuToggle = document.getElementById("menuToggle");
+
+  function showPage(name) {
+    pages.forEach(p => p.classList.toggle("active", p.id === "page-" + name));
+    navLinks.forEach(link => link.classList.toggle("active", link.dataset.page === name));
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  navLinks.forEach(link => {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+      const page = link.dataset.page;
+      showPage(page);
+      nav.classList.remove("open");
+    });
+  });
+
+  menuToggle.addEventListener("click", () => {
+    nav.classList.toggle("open");
+  });
+
+  document.getElementById("homeOrderBtn").onclick = () => showPage("order");
+  document.getElementById("homeIdeasBtn").onclick = () => showPage("ideas");
+
+  // ---------- SAMPLE PROJECT IDEAS ----------
+  const defaultIdeas = [
+    {
+      id: "p1",
+      serial: "P-0001",
+      title: "IoT Smart Water Level Monitoring using ESP32",
+      type: "Hardware / IoT",
+      shortDesc: "Monitor tank water level with ultrasonic sensor, ESP32 and mobile dashboard.",
+      longDesc:
+        "This project uses an ultrasonic sensor and ESP32 to measure water level in an overhead tank or sump. " +
+        "Data is sent through Wi-Fi to a simple web / mobile dashboard. The system also gives alerts when the tank is almost empty or full. " +
+        "Includes circuit, firmware code and documentation.",
+      img: "https://images.pexels.com/photos/3735752/pexels-photo-3735752.jpeg?auto=compress&cs=tinysrgb&w=800"
+    },
+    {
+      id: "p2",
+      serial: "P-0002",
+      title: "AI Fake News Detection using Machine Learning",
+      type: "AI / ML",
+      shortDesc: "Python project to classify news as real or fake using NLP and ML models.",
+      longDesc:
+        "A text classification project using machine learning. Students train a model with a news dataset using features such as TF-IDF. " +
+        "A small web interface allows users to paste news text and get Real / Fake prediction. Complete with dataset and report.",
+      img: "https://images.pexels.com/photos/590011/pexels-photo-590011.jpeg?auto=compress&cs=tinysrgb&w=800"
+    },
+    {
+      id: "p3",
+      serial: "P-0003",
+      title: "RFID Based Smart Attendance System with Cloud Dashboard",
+      type: "Hardware / IoT",
+      shortDesc: "RFID card based attendance, synced to cloud / Google Sheet with report.",
+      longDesc:
+        "Each student has an RFID card. When they tap the reader, the microcontroller logs attendance and sends it to cloud or Google Sheet. " +
+        "A dashboard shows present / absent and summary reports. Good for diploma and engineering students.",
+      img: "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800"
+    },
+    {
+      id: "p4",
+      serial: "P-0004",
+      title: "Smart Home Automation with Voice & Mobile Control",
+      type: "Hardware / IoT",
+      shortDesc: "Control lights and appliances using mobile app and optional voice commands.",
+      longDesc:
+        "Relays control home appliances. A mobile app or web page allows on/off and scheduling. " +
+        "Optionally, integrate with Google Assistant or Alexa for voice control using IFTTT or MQTT.",
+      img: "https://images.pexels.com/photos/439391/pexels-photo-439391.jpeg?auto=compress&cs=tinysrgb&w=800"
+    },
+    {
+      id: "p5",
+      serial: "P-0005",
+      title: "Online College Result Management System",
+      type: "Software / Web",
+      shortDesc: "Web app to manage marks and generate student result reports.",
+      longDesc:
+        "Admin can add students, subjects and marks. Students can login to view their results, CGPA / percentage and download PDF reports. " +
+        "Can be implemented using Node/MongoDB, PHP/MySQL or Django depending on requirement.",
+      img: "https://images.pexels.com/photos/6238031/pexels-photo-6238031.jpeg?auto=compress&cs=tinysrgb&w=800"
+    },
+    {
+      id: "p6",
+      serial: "P-0006",
+      title: "Line Follower Robot with Obstacle Detection",
+      type: "Robotics",
+      shortDesc: "Simple robot that follows a line and avoids obstacles.",
+      longDesc:
+        "IR sensors follow a black line on white surface, and an ultrasonic sensor detects obstacles. " +
+        "The robot stops or takes a turn when something appears in front. Built using Arduino / STM32 with motor driver.",
+      img: "https://images.pexels.com/photos/3912973/pexels-photo-3912973.jpeg?auto=compress&cs=tinysrgb&w=800"
+    }
+  ];
+
+  function loadIdeas() {
+    const saved = localStorage.getItem("sevenpro_ideas");
+    if (saved) {
+      try { return JSON.parse(saved); } catch (e) {}
+    }
+    return defaultIdeas;
+  }
+
+  function saveIdeas(ideas) {
+    localStorage.setItem("sevenpro_ideas", JSON.stringify(ideas));
+  }
+
+  let ideas = loadIdeas();
+  const ideasGrid = document.getElementById("ideasGrid");
+  const ideasShown = document.getElementById("ideasShown");
+  const ideasTotal = document.getElementById("ideasTotal");
+  const ideaSearchInput = document.getElementById("ideaSearch");
+  const ideaSearchBtn = document.getElementById("ideaSearchBtn");
+
+  ideasTotal.textContent = ideas.length.toString();
+
+  function renderIdeas(list = ideas) {
+    ideasGrid.innerHTML = "";
+    ideasShown.textContent = list.length.toString();
+
+    if (!list.length) {
+      const p = document.createElement("p");
+      p.className = "text-muted";
+      p.textContent = "No matching ideas. Try a different keyword or a part of the topic.";
+      ideasGrid.appendChild(p);
+      return;
+    }
+
+    list.forEach(idea => {
+      const card = document.createElement("article");
+      card.className = "idea-card";
+      card.dataset.id = idea.id;
+
+      const img = document.createElement("div");
+      img.className = "idea-img";
+      img.style.backgroundImage =
+        "url('" + (idea.img || "https://images.pexels.com/photos/256381/pexels-photo-256381.jpeg?auto=compress&cs=tinysrgb&w=800") + "')";
+
+      const info = document.createElement("div");
+      info.className = "idea-info";
+
+      const serial = document.createElement("div");
+      serial.className = "idea-serial";
+      serial.innerHTML = '<i class="fas fa-hashtag"></i>' + idea.serial;
+
+      const type = document.createElement("div");
+      type.className = "idea-type";
+      type.textContent = idea.type;
+
+      const title = document.createElement("h3");
+      title.className = "idea-title";
+      title.textContent = idea.title;
+
+      const desc = document.createElement("p");
+      desc.className = "idea-desc";
+      desc.textContent = idea.shortDesc;
+
+      const footer = document.createElement("div");
+      footer.className = "idea-footer";
+      footer.innerHTML =
+        '<span><i class="fas fa-magnifying-glass"></i> View details</span>' +
+        '<button class="btn btn-ghost" type="button"><i class="fas fa-cart-plus"></i> Order</button>';
+
+      info.appendChild(serial);
+      info.appendChild(type);
+      info.appendChild(title);
+      info.appendChild(desc);
+      info.appendChild(footer);
+
+      card.appendChild(img);
+      card.appendChild(info);
+
+      card.addEventListener("click", (e) => {
+        const ordered = e.target.closest("button");
+        openIdeaModal(idea, !!ordered);
+      });
+
+      ideasGrid.appendChild(card);
+    });
+  }
+
+  function filterIdeas() {
+    const q = ideaSearchInput.value.trim().toLowerCase();
+    if (!q) {
+      renderIdeas(ideas);
+      return;
+    }
+    const filtered = ideas.filter(idea => {
+      const hay = (idea.serial + " " + idea.title + " " + idea.shortDesc + " " + (idea.longDesc || "")).toLowerCase();
+      return hay.includes(q);
+    });
+    renderIdeas(filtered);
+  }
+
+  ideaSearchInput.addEventListener("input", filterIdeas);
+  ideaSearchBtn.addEventListener("click", filterIdeas);
+
+  renderIdeas();
+
+  // ---------- IDEA MODAL + ORDER FROM IDEA ----------
+  const ideaModalBackdrop = document.getElementById("ideaModalBackdrop");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalMeta = document.getElementById("modalMeta");
+  const modalImg = document.getElementById("modalImg");
+  const modalTags = document.getElementById("modalTags");
+  const modalDesc = document.getElementById("modalDesc");
+  const modalClose = document.getElementById("modalClose");
+  const modalOrderBtn = document.getElementById("modalOrderBtn");
+
+  let selectedIdea = null;
+
+  function openIdeaModal(idea, orderNow) {
+    selectedIdea = idea;
+    modalTitle.textContent = idea.title;
+    modalMeta.textContent = idea.serial + " | " + idea.type;
+    modalImg.style.backgroundImage =
+      "url('" + (idea.img || "https://images.pexels.com/photos/256381/pexels-photo-256381.jpeg?auto=compress&cs=tinysrgb&w=800") + "')";
+    modalTags.innerHTML = "";
+    const tag1 = document.createElement("span");
+    tag1.textContent = "Serial: " + idea.serial;
+    const tag2 = document.createElement("span");
+    tag2.textContent = "Domain: " + idea.type;
+    modalTags.appendChild(tag1);
+    modalTags.appendChild(tag2);
+    modalDesc.textContent = idea.longDesc || idea.shortDesc;
+
+    ideaModalBackdrop.classList.add("active");
+
+    if (orderNow) {
+      handleIdeaOrder();
+    }
+  }
+
+  function closeIdeaModal() {
+    ideaModalBackdrop.classList.remove("active");
+  }
+
+  modalClose.addEventListener("click", closeIdeaModal);
+  ideaModalBackdrop.addEventListener("click", (e) => {
+    if (e.target === ideaModalBackdrop) closeIdeaModal();
+  });
+
+  function handleIdeaOrder() {
+    if (!selectedIdea) return;
+    applyIdeaToOrder(selectedIdea);
+    closeIdeaModal();
+    showPage("order");
+  }
+
+  modalOrderBtn.addEventListener("click", handleIdeaOrder);
+
+  // ---------- ORDER FORM LOGIC ----------
+  const orderForm = document.getElementById("orderForm");
+  const stepItems = document.querySelectorAll(".step-item");
+  const formSteps = document.querySelectorAll(".form-step");
+  const goToStep2 = document.getElementById("goToStep2");
+  const backToStep1 = document.getElementById("backToStep1");
+  const orderMsg = document.getElementById("orderMsg");
+
+  const projectSerialInput = document.getElementById("projectSerial");
+  const orderedFromIdeaInput = document.getElementById("orderedFromIdea");
+  const projectTitleInput = document.getElementById("projectTitle");
+  const projectConceptInput = document.getElementById("projectConcept");
+
+  const selectedProjectBox = document.getElementById("selectedProjectBox");
+  const selectedProjectText = document.getElementById("selectedProjectText");
+  const clearSelectedProject = document.getElementById("clearSelectedProject");
+
+  function setStep(step) {
+    formSteps.forEach(s => s.classList.toggle("active", s.dataset.step === String(step)));
+    stepItems.forEach(i => i.classList.toggle("active", i.dataset.step === String(step)));
+  }
+
+  function setMessage(el, text, type) {
+    if (type === "clear" || !text) {
+      el.style.display = "none";
+      return;
+    }
+    el.textContent = text;
+    el.classList.remove("success", "error");
+    if (type === "success") el.classList.add("success");
+    if (type === "error") el.classList.add("error");
+    el.style.display = "block";
+  }
+
+  function isValidMobile(num) {
+    const digits = num.replace(/\D/g, "");
+    return /^[6-9]\d{9}$/.test(digits);
+  }
+
+  function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  function validateStep1() {
+    const required = ["studentName", "instituteName", "mobile", "city", "educationLevel"];
+    for (const id of required) {
+      const el = document.getElementById(id);
+      if (!el.value.trim()) {
+        el.focus();
+        setMessage(orderMsg, "Please fill all required student details.", "error");
+        return false;
+      }
+    }
+    const mobileVal = document.getElementById("mobile").value.trim();
+    if (!isValidMobile(mobileVal)) {
+      document.getElementById("mobile").focus();
+      setMessage(orderMsg, "Please enter a valid 10-digit Indian mobile number (starting with 6–9).", "error");
+      return false;
+    }
+    const emailVal = document.getElementById("email").value.trim();
+    if (emailVal && !isValidEmail(emailVal)) {
+      document.getElementById("email").focus();
+      setMessage(orderMsg, "Please enter a valid email address or leave it empty.", "error");
+      return false;
+    }
+    setMessage(orderMsg, "", "clear");
+    return true;
+  }
+
+  goToStep2.addEventListener("click", () => {
+    if (!validateStep1()) return;
+    setStep(2);
+  });
+
+  backToStep1.addEventListener("click", () => {
+    setMessage(orderMsg, "", "clear");
+    setStep(1);
+  });
+
+  function applyIdeaToOrder(idea) {
+    projectSerialInput.value = idea.serial;
+    orderedFromIdeaInput.value = "yes";
+    projectTitleInput.value = idea.title;
+    projectConceptInput.value = idea.shortDesc;
+    selectedProjectBox.style.display = "block";
+    selectedProjectText.textContent = idea.serial + " – " + idea.title;
+  }
+
+  clearSelectedProject.addEventListener("click", () => {
+    projectSerialInput.value = "";
+    orderedFromIdeaInput.value = "no";
+    selectedProjectBox.style.display = "none";
+    selectedProjectText.textContent = "";
+  });
+
+  function getOrdersLocal() {
+    const saved = localStorage.getItem("sevenpro_orders");
+    if (saved) { try { return JSON.parse(saved); } catch(e) {} }
+    return [];
+  }
+
+  function saveOrdersLocal(orders) {
+    localStorage.setItem("sevenpro_orders", JSON.stringify(orders));
+  }
+
+  let orders = getOrdersLocal();
+
+  const API_URL = "http://localhost:4000/api/orders"; // Node + Mongo backend
+
+  async function submitOrderToBackend(order) {
+    // always try backend first
+    try {
+      const res = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(order)
+      });
+      if (!res.ok) throw new Error("Server error");
+      const data = await res.json();
+
+      const newOrder = {
+        id: data.id || ("ORD-" + Date.now()),
+        createdAt: data.createdAt || new Date().toISOString(),
+        ...order
+      };
+      orders.push(newOrder);
+      saveOrdersLocal(orders);
+      renderOrdersTable();
+
+      return { ok: true };
+    } catch (err) {
+      console.warn("Backend failed, saving only locally:", err);
+      const fallbackOrder = {
+        id: "ORD-" + Date.now(),
+        createdAt: new Date().toISOString(),
+        ...order
+      };
+      orders.push(fallbackOrder);
+      saveOrdersLocal(orders);
+      renderOrdersTable();
+      return { ok: true, localOnly: true };
+    }
+  }
+
+  orderForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    if (!validateStep1()) {
+      setStep(1);
+      return;
+    }
+
+    const needed = ["projectTitle", "projectDomain", "projectConcept", "deadline"];
+    for (const id of needed) {
+      const el = document.getElementById(id);
+      if (!el.value.trim()) {
+        el.focus();
+        setMessage(orderMsg, "Please fill all required project details.", "error");
+        return;
+      }
+    }
+
+    const order = {
+      studentName: document.getElementById("studentName").value.trim(),
+      instituteName: document.getElementById("instituteName").value.trim(),
+      mobile: document.getElementById("mobile").value.trim(),
+      email: document.getElementById("email").value.trim(),
+      city: document.getElementById("city").value.trim(),
+      educationLevel: document.getElementById("educationLevel").value,
+      projectSerial: projectSerialInput.value.trim(),
+      orderedFromIdea: orderedFromIdeaInput.value || "no",
+      projectTitle: projectTitleInput.value.trim(),
+      projectDomain: document.getElementById("projectDomain").value,
+      projectConcept: projectConceptInput.value.trim(),
+      projectDescription: document.getElementById("projectDescription").value.trim(),
+      deadline: document.getElementById("deadline").value,
+      budget: document.getElementById("budget").value
+    };
+
+    try {
+      setMessage(orderMsg, "Submitting your order...", "success");
+      await submitOrderToBackend(order);
+
+      orderForm.reset();
+      clearSelectedProject.click();
+      setStep(1);
+      setMessage(orderMsg,
+        "Thank you! Your project request has been submitted. Our team will contact you within an hour.",
+        "success"
+      );
+    } catch (err) {
+      console.error(err);
+      setMessage(orderMsg,
+        "Something went wrong while submitting your order. Please try again or contact us directly.",
+        "error"
+      );
+    }
+  });
+
+  // ---------- CONTACT FORM ----------
+  const contactForm = document.getElementById("contactForm");
+  const contactMsg = document.getElementById("contactMsg");
+
+  contactForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = document.getElementById("contactName").value.trim();
+    const phone = document.getElementById("contactPhone").value.trim();
+    const msgText = document.getElementById("contactMessage").value.trim();
+    if (!name || !phone || !msgText) {
+      setMessage(contactMsg, "Please fill all contact fields.", "error");
+      return;
+    }
+    setMessage(contactMsg, "Thank you! Your message has been sent. We will reply soon.", "success");
+    contactForm.reset();
+  });
+
+  // ---------- ADMIN / HOST ----------
+  const ADMIN_USER = "team7";
+  const ADMIN_PASS = "999414";
+
+  const adminLoginBox = document.getElementById("adminLoginBox");
+  const adminPanel = document.getElementById("adminPanel");
+  const adminLoginForm = document.getElementById("adminLoginForm");
+  const adminLoginMsg = document.getElementById("adminLoginMsg");
+  const adminLogoutBtn = document.getElementById("adminLogoutBtn");
+  const ordersTableWrapper = document.getElementById("ordersTableWrapper");
+  const ordersEmptyText = document.getElementById("ordersEmptyText");
+
+  function setAdminLoggedIn(v) {
+    localStorage.setItem("sevenpro_admin_logged", v ? "1" : "0");
+  }
+  function isAdminLoggedIn() {
+    return localStorage.getItem("sevenpro_admin_logged") === "1";
+  }
+
+  function updateAdminView() {
+    if (isAdminLoggedIn()) {
+      adminLoginBox.style.display = "none";
+      adminPanel.style.display = "block";
+      renderOrdersTable();
+    } else {
+      adminLoginBox.style.display = "block";
+      adminPanel.style.display = "none";
+    }
+  }
+
+  adminLoginForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const u = document.getElementById("adminUser").value.trim();
+    const p = document.getElementById("adminPass").value.trim();
+    if (u === ADMIN_USER && p === ADMIN_PASS) {
+      setAdminLoggedIn(true);
+      setMessage(adminLoginMsg, "Login successful. Host section unlocked.", "success");
+      updateAdminView();
+    } else {
+      setMessage(adminLoginMsg, "Invalid user ID or password.", "error");
+    }
+  });
+
+  adminLogoutBtn.addEventListener("click", () => {
+    setAdminLoggedIn(false);
+    updateAdminView();
+  });
+
+  function renderOrdersTable() {
+    orders = getOrdersLocal();
+    if (!orders.length) {
+      ordersTableWrapper.innerHTML = "";
+      ordersEmptyText.style.display = "block";
+      return;
+    }
+    ordersEmptyText.style.display = "none";
+    let html = "<table><thead><tr>" +
+      "<th>Order ID</th><th>Date</th><th>Student</th><th>Institute</th>" +
+      "<th>Mobile</th><th>City</th><th>Serial</th><th>Title</th><th>Domain</th><th>Deadline</th>" +
+      "</tr></thead><tbody>";
+    orders.slice().reverse().forEach(o => {
+      const d = o.createdAt ? new Date(o.createdAt) : new Date();
+      const dateStr = d.toLocaleDateString() + " " + d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+      html += "<tr>" +
+        `<td>${o.id || ""}</td>` +
+        `<td>${dateStr}</td>` +
+        `<td>${o.studentName || ""}</td>` +
+        `<td>${o.instituteName || ""}</td>` +
+        `<td>${o.mobile || ""}</td>` +
+        `<td>${o.city || ""}</td>` +
+        `<td>${o.projectSerial || "-"}</td>` +
+        `<td>${o.projectTitle || ""}</td>` +
+        `<td>${o.projectDomain || ""}</td>` +
+        `<td>${o.deadline || "-"}</td>` +
+        "</tr>";
+    });
+    html += "</tbody></table>";
+    ordersTableWrapper.innerHTML = html;
+  }
+
+  // add new idea form
+  const addIdeaForm = document.getElementById("addIdeaForm");
+  addIdeaForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const serial = document.getElementById("ideaSerial").value.trim();
+    const title = document.getElementById("ideaTitle").value.trim();
+    const type = document.getElementById("ideaType").value;
+    const img = document.getElementById("ideaImg").value.trim();
+    const shortDesc = document.getElementById("ideaShort").value.trim();
+    const longDesc = document.getElementById("ideaLong").value.trim();
+
+    if (!serial || !title || !type || !shortDesc || !longDesc) {
+      alert("Please fill all required project idea fields.");
+      return;
+    }
+
+    const newIdea = {
+      id: "p" + Date.now(),
+      serial,
+      title,
+      type,
+      shortDesc,
+      longDesc,
+      img
+    };
+    ideas.push(newIdea);
+    saveIdeas(ideas);
+    ideasTotal.textContent = ideas.length.toString();
+    renderIdeas();
+    addIdeaForm.reset();
+    alert("New project idea added.");
+  });
+
+  // ---------- INIT ----------
+  updateAdminView();
+  document.getElementById("footerYear").textContent = new Date().getFullYear().toString();
+});
+</script>
+</body>
+</html>
+>>>>>>> 9fba741faca705f7ee9ba7fda38a93d3bdc002b0
